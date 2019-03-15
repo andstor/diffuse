@@ -1,0 +1,46 @@
+{
+  "name": "diffuse",
+  "version": "0.0.1",
+  "description": "3D simulator for simulating diffusion",
+  "main": "dist/diffuse.js",
+  "unpkg": "dist/diffuse.js",
+  "scripts": {
+    "build": "parallel-webpack",
+    "watch": "parallel-webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andstor/diffuse.git"
+  },
+  "keywords": [
+    "diffusion",
+    "simulator"
+  ],
+  "author": {
+    "name": "André Storhaug",
+    "email": "andr3.storhaug@gmail.com",
+    "url": "https://github.com/andstor"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andstor/diffuse/issues"
+  },
+  "files": [
+    "/dist",
+    "/src",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/andstor/diffuse",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "parallel-webpack": "^2.3.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "ajv": "^6.10.0",
+    "three": "^0.102.1"
+  }
+}
