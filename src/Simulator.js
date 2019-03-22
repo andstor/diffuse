@@ -8,7 +8,6 @@ class Simulator{
         let rootY = 5;
         let rootZ = 5;
         this.steps = 100000;
-        let particles = 1000;
         this.universe = new UniverseGenerator(x, y, z, rootX, rootY, rootZ, particles);
     }
 
@@ -21,17 +20,17 @@ class Simulator{
 
     simulateOneStep(){
         for(let cell of this.universe){
-            cell.distributeParticles();
+            cell.distributeShares();
         }
         for(let cell of this.universe){
-            cell.addNewParticlesToParticleCount();
+            cell.addNewShareToShare();
         }
     }
 
     logResult(){
         let particles = 0;
         for(let cell of this.universe){
-            particles += cell.particles;
+            particles += cell.share;
             console.log(cell);
         }
         console.log(particles);

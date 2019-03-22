@@ -1,7 +1,7 @@
 export class Cell {
     constructor(x, y, z) {
-        this.particles = 0;
-        this.newParticles = 0;
+        this.share = 0;
+        this.newShare = 0;
         this.x = x;
         this.y = y;
         this.z = z;
@@ -9,16 +9,8 @@ export class Cell {
 
     }
 
-    receiveNewParticle() {
-        this.newParticles++;
-    }
-
-    getParticles() {
-        return this.particles;
-    }
-
-    getNeighbours() {
-        return this.neighbours;
+    receiveShare(newShare) {
+        this.newShare = newShare;
     }
 
     getX() {
@@ -33,18 +25,16 @@ export class Cell {
         return this.z;
     }
 
-    addNewParticlesToParticleCount() {
-        this.particles = this.newParticles;
-        this.newParticles = 0;
+    addNewShareToShare() {
+        this.share = this.newShare;
+        this.newShare = 0;
     }
 
-    distributeParticles() {
+    distributeShares() {
         let numberOfNeighbours = this.neighbours.length;
-        let x = this.particles;
-        for (let i = 0; i < x; i++) {
-            this.neighbours[Math.floor(Math.random() *
-                numberOfNeighbours)].receiveNewParticle();
-            this.particles--;
+        for (let i = 0; i < numberOfNeighbours; i++) {
+            this.neighbours[i].receiveShare(this.share/numberOfNeighbours);
         }
+        this.share = 0;
     }
 }
