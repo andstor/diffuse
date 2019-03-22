@@ -8,7 +8,7 @@ export class UniverseGenerator {
         this.z = universeShape.getZ();
 
         this.particles = particles;
-        this.universe = this.createUniverseWithCells(this.x, this.y, this.z);
+        this.universe = this.createUniverseWithCells();
         this.universe[rootX][rootY][rootZ].particles = particles;
         this.addNeighbours(this.universe);
     }
@@ -22,7 +22,9 @@ export class UniverseGenerator {
         for (let i = 0; i < this.x; i++) {
             for (let j = 0; j < this.y; j++) {
                 for (let k = 0; k < this.z; k++) {
-                    a.push(universe[i][j][k]);
+                    if(universe[i][j][k] != null) {
+                        a.push(universe[i][j][k]);
+                    }
                 }
             }
         }
@@ -36,7 +38,12 @@ export class UniverseGenerator {
             for (let j = 0; j < this.y; j++) {
                 universe[i][j] = [];
                 for (let k = 0; k < this.z; k++) {
-                    universe[i][j][k] = new Cell(i, j, k);
+                    if (this.universeShape.matrix[i][j][k] === 1){
+                        universe[i][j][k] = new Cell(i, j, k);
+                    }
+                    else {
+                        universe[i][j][k] = null;
+                    }
                 }
             }
         }
@@ -47,8 +54,10 @@ export class UniverseGenerator {
         for (let i = 0; i < this.x; i++) {
             for (let j = 0; j < this.y; j++) {
                 for (let k = 0; k < this.z; k++) {
-                    let neighbours = this.findNeighbours(i, j, k, universe);
-                    universe[i][j][k].neighbours = neighbours;
+                    if(universe[i][j][k] != null) {
+                        let neighbours = this.findNeighbours(i, j, k, universe);
+                        universe[i][j][k].neighbours = neighbours;
+                    }
                 }
             }
         }
@@ -62,7 +71,9 @@ export class UniverseGenerator {
                     if ((x + i) < this.x && (x + i) >= 0 && (y + j) < this.y &&
                         (y + j) >= 0 &&
                         (z + k) < this.z && (z + k) >= 0) {
-                        neighbours.push(universe[x + i][y + j][z + k]);
+                        if(universe[x + i][y + j][z + k] != null) {
+                            neighbours.push(universe[x + i][y + j][z + k]);
+                        }
                     }
                 }
             }
