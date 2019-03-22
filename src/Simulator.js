@@ -1,3 +1,5 @@
+import {UniverseShape} from "./UniverseShape";
+import {UniverseGenerator} from "./UniverseGenerator";
 
 class Simulator{
     constructor(){
@@ -9,7 +11,9 @@ class Simulator{
         let rootZ = 5;
         this.steps = 100000;
         let particles = 1000;
-        this.universe = new UniverseGenerator(x, y, z, rootX, rootY, rootZ, particles);
+        this.universeShape = new UniverseShape(matrix);
+        this.universeGenerator = new UniverseGenerator(this.universeShape, rootX, rootY, rootZ, particles);
+        this.universe = this.universeGenerator.getUniverse();
     }
 
     simulate(){
