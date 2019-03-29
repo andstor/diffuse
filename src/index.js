@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-
 class DiffusionSimulator {
   test() {
 
@@ -27,6 +26,12 @@ class DiffusionSimulator {
     };
 
     render();
+  }
+
+  simulate(){
+    //let SIMULATOR = require("./src/Simulator");
+    let simulator = new Simulator();
+    simulator.simulate();
   }
 }
 

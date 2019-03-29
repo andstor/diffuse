@@ -42,7 +42,6 @@ export class UniverseGenerator {
                     else {
                         universe[i][j][k] = null;
                     }
-
                 }
             }
         }

@@ -1,21 +1,10 @@
 export class UniverseShape {
 
-    constructor(x, y, z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    setX(x) {
-        this.x = x;
-    }
-
-    setY(y) {
-        this.y = y;
-    }
-
-    setZ(z) {
-        this.z = z;
+    constructor(matrix) {
+        this.matrix = matrix;
+        this.x = this.matrix.length;
+        this.y = this.matrix[0].length;;
+        this.z = this.matrix[0][0].length;
     }
 
     getX() {
